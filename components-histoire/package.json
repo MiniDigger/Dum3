@@ -1,0 +1,21 @@
+{
+  "name": "hangar-components",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "story:dev": "histoire dev",
+    "story:build": "histoire build",
+    "story:preview": "histoire preview"
+  },
+  "dependencies": {
+    "vue": "3.5.22"
+  },
+  "devDependencies": {
+    "@histoire/plugin-vue": "1.0.0-alpha.4",
+    "@vitejs/plugin-vue": "6.0.1",
+    "histoire": "1.0.0-alpha.4",
+    "sass-embedded": "1.93.2",
+    "vite": "7.1.12"
+  }
+}
