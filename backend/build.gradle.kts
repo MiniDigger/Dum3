@@ -6,7 +6,6 @@ plugins {
 
 group = "dev.hangarmc"
 version = "3.0.0-SNAPSHOT"
-description = "Demo project for Spring Boot"
 
 java {
 	toolchain {
@@ -21,8 +20,7 @@ configurations {
 }
 
 repositories {
-//	mavenCentral()
-	maven("https://repo.gothaer.de/repository/public/")
+	mavenCentral()
 }
 
 extra["springModulithVersion"] = "2.0.0-RC1"
@@ -39,6 +37,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-webmvc")
 	implementation("org.flywaydb:flyway-database-postgresql")
 	implementation("org.springframework.modulith:spring-modulith-starter-core")
+	implementation("org.springframework.modulith:spring-modulith-starter-jdbc")
 	implementation("org.springframework.security:spring-security-webauthn")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("org.postgresql:postgresql")
@@ -54,6 +53,7 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-security-oauth2-client-test")
 	testImplementation("org.springframework.boot:spring-boot-starter-security-test")
 	testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.boot:spring-boot-testcontainers")
 	testImplementation("org.springframework.modulith:spring-modulith-starter-test")
 	testImplementation("org.testcontainers:testcontainers-grafana")

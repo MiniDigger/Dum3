@@ -1,3 +1,49 @@
+###########
+# General #
+###########
+server:
+  address: 0.0.0.0
+  port: 8080
+  servlet:
+    encoding:
+      charset: "UTF-8"
+
+  tomcat:
+    mbeanregistry:
+      enabled: true
+
 spring:
   application:
-    name: hangar
+    name: "Hangar Backend"
+  ############
+  # DataBase #
+  ############
+  sql:
+    init:
+      platform: postgres
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hangar3
+    username: hangar
+    password: hangar
+
+  threads:
+    virtual:
+      enabled: true
+
+  modulith:
+    events:
+      jdbc:
+        schema-initialization:
+          enabled: true
+      republish-outstanding-events-on-restart: true
+
+management:
+  endpoints:
+    access:
+      default: read_only
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      access: read_only
