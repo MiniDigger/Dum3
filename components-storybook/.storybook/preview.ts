@@ -4,28 +4,22 @@ import {withThemeByDataAttribute} from "@storybook/addon-themes";
 import "@/style/main.scss"
 
 const preview: Preview = {
-    parameters: {
-        controls: {
+    decorators: [
+        withThemeByDataAttribute({
+            attributeName: "theme", defaultTheme: "light", themes: {
+                dark: "dark", light: "light",
+            }
+        }),
+    ], parameters: {
+        backgrounds: {
+            disable: true
+        }, controls: {
             matchers: {
                 color: /(background|color)$/i,
                 date: /Date$/i,
             },
-        },
-        backgrounds: {
-            disable: true
         }
-    },
-    decorators: [
-        withThemeByDataAttribute({
-            themes: {
-                light: "light",
-                dark: "dark",
-            },
-            defaultTheme: "light",
-            attributeName: "theme"
-        }),
-    ],
-    tags: ['autodocs'],
+    }, tags: ['autodocs'],
 };
 
 export default preview;

@@ -4,8 +4,14 @@ const { type = "text" } = defineProps<{
    * this is a test
    */
   type: "text" | "password" | "email";
-  label: string;
+  label?: string;
 }>()
+
+try {
+  console.log("ddd")
+} catch (error) {
+  console.error(error);
+}
 
 const model = defineModel<string>();
 </script>
@@ -13,7 +19,7 @@ const model = defineModel<string>();
 <template>
   <label class="input">
     <span class="input__label">{{ label }}</span>
-    <input class="input__input" v-model="model" :type/>
+    <input v-model="model" class="input__input" :type/>
   </label>
 </template>
 

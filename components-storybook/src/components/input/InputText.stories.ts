@@ -3,8 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import InputText from './InputText.vue';
 
 const meta: Meta<typeof InputText> = {
-    title: "Input/InputText",
-    component: InputText,
+    component: InputText, title: "Input/InputText",
 };
 
 export default meta;
@@ -19,18 +18,14 @@ const render = (args: (typeof meta)["args"]) => ({
 }) ;
 
 export const Text: Story = {
-    render,
     args: {
-        type: "text",
-        label: "Label"
-    }
+        label: "Label", type: "text"
+    }, render
 };
 
 export const EMail: Story = {
-    render,
     args: {
-        type: "email",
-        label: "Label"
-    }
+        label: "Label", type: "email"
+    }, render
 };
 
