@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build",
-    "lint": "oxlint --fix && eslint . --fix"
+    "lint": "eslint --ext .ts,.vue --fix src",
+    "format": "prettier .  --write"
   },
   "dependencies": {
     "vue": "3.5.22"
@@ -26,11 +27,8 @@
     "@vue/tsconfig": "0.8.1",
     "eslint": "9.38.0",
     "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-oxlint": "1.25.0",
     "eslint-plugin-vue": "10.5.1",
     "globals": "16.4.0",
-    "oxlint": "1.25.0",
-    "oxlint-tsgolint": "0.4.0",
     "sass-embedded": "1.93.2",
     "storybook": "10.0.2",
     "storybook-addon-pseudo-states": "10.0.2",
@@ -38,7 +36,6 @@
     "typescript-eslint": "8.46.2",
     "vite": "7.1.12",
     "vite-plugin-eslint": "1.8.1",
-    "vite-plugin-oxlint": "1.4.0",
     "vue-eslint-parser": "10.2.0",
     "vue-tsc": "3.1.2"
   }

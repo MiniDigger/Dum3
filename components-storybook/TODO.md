@@ -1,6 +1,6 @@
-* unit tests
-* VRT
-* oxlint
-* oxfmt
-* stylelint?
-* semantic color variables (https://www.fourzerothree.in/p/crafting-a-semantic-colour-system)
+- unit tests
+- VRT
+- oxlint
+- oxfmt
+- stylelint?
+- semantic color variables (https://www.fourzerothree.in/p/crafting-a-semantic-colour-system)
