@@ -51,6 +51,10 @@ management:
       access: read_only
 
 logging:
+  pattern:
+    dateformat: "HH:mm:ss.SSS"
+    correlation: ""
+  include-application-name: false
   level:
     root: INFO
     org.springframework.web: DEBUG
