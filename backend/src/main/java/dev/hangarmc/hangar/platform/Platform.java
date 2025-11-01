@@ -11,20 +11,19 @@ import org.jdbi.v3.core.enums.EnumByOrdinal;
 public enum Platform {
 
     // NOTE: The order here should always be the order they are displayed whenever there is a list somewhere on the frontend
-    PAPER("Paper", "https://papermc.io/downloads", true),
-    WATERFALL("Waterfall", "https://papermc.io/downloads#Waterfall", true),
-    VELOCITY("Velocity", "https://www.velocitypowered.com/downloads", true);
+    PAPER("Paper", "https://papermc.io/downloads/paper/"),
+    WATERFALL("Waterfall", "https://papermc.io/software/waterfall/"),
+    VELOCITY("Velocity", "https://papermc.io/software/velocity/"),
+    FOLIA("Folia", "https://papermc.io/software/folia/");
 
     private static final Platform[] VALUES = values();
 
     private final String name;
-    private final boolean isVisible;
     private final String url;
 
-    Platform(final String name, final String url, final boolean isVisible) {
+    Platform(final String name, final String url) {
         this.name = name;
         this.url = url;
-        this.isVisible = isVisible;
     }
 
     public String getName() {
@@ -34,10 +33,6 @@ public enum Platform {
     @JsonValue
     public String getEnumName() {
         return this.name();
-    }
-
-    public boolean isVisible() {
-        return this.isVisible;
     }
 
     public String getUrl() {

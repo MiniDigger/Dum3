@@ -23,7 +23,6 @@ import javax.sql.DataSource;
 import java.util.List;
 
 @Configuration
-@EnableJdbiRepositories
 class JdbiConfig {
 
     @Bean
