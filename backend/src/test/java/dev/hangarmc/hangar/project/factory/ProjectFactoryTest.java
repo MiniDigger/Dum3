@@ -1,7 +1,6 @@
 package dev.hangarmc.hangar.project.factory;
 
 import dev.hangarmc.hangar.project.ProjectCreatedEvent;
-import dev.hangarmc.hangar.project.factory.ProjectFactoryController.ProjectCreateRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.modulith.test.ApplicationModuleTest;
 import org.springframework.modulith.test.Scenario;
@@ -19,7 +18,7 @@ class ProjectFactoryTest {
 
     @Test
     void testProjectCreation(Scenario scenario) {
-        scenario.stimulate(() -> projectFactory.createProject(new ProjectCreateRequest("TestProject", "A test project")))
+        scenario.stimulate(() -> projectFactory.createProject(new NewProjectForm("TestProject", "A test project")))
                 .andWaitForEventOfType(ProjectCreatedEvent.class)
                 .toArriveAndVerify(event -> {
                     assertThat(event).isNotNull();

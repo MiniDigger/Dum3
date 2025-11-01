@@ -36,6 +36,8 @@ spring:
         schema-initialization:
           enabled: true
       republish-outstanding-events-on-restart: true
+    runtime:
+      flyway-enabled: true
 
 management:
   endpoints:
@@ -47,3 +49,8 @@ management:
   endpoint:
     health:
       access: read_only
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG

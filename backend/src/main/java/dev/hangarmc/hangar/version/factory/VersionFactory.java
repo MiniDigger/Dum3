@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 class VersionFactory {
 
     private final ApplicationEventPublisher eventPublisher;
+    private final PluginDataService pluginDataService;
 
-    VersionFactory(ApplicationEventPublisher eventPublisher) {
+    VersionFactory(ApplicationEventPublisher eventPublisher, PluginDataService pluginDataService) {
         this.eventPublisher = eventPublisher;
+        this.pluginDataService = pluginDataService;
     }
 
     void createVersion() {

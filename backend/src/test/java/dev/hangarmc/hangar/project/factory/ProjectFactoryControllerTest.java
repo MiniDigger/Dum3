@@ -1,5 +1,6 @@
 package dev.hangarmc.hangar.project.factory;
 
+import dev.hangarmc.hangar.HangarConfigs;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,11 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@HangarConfigs
 @WebMvcTest(ProjectFactoryController.class)
 class ProjectFactoryControllerTest {
 
@@ -23,20 +26,48 @@ class ProjectFactoryControllerTest {
     private ProjectFactory projectFactory;
 
     @Test
-    void createProject_postsFormAndCallsFactory() throws Exception {
-        // Send as form parameters because the controller expects a bound object (no @RequestBody)
+    void createProject_happyDay() throws Exception {
+        String body = "{\"name\":\"my-project\",\"description\":\"a test project\"}";
+
         mockMvc.perform(post("/api/internal/project/factory/create")
-                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                        .param("name", "my-project")
-                        .param("description", "a test project"))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(body))
                 .andExpect(status().isOk());
 
-        var captor = ArgumentCaptor.forClass(ProjectFactoryController.ProjectCreateRequest.class);
+        var captor = ArgumentCaptor.forClass(NewProjectForm.class);
         verify(projectFactory).createProject(captor.capture());
 
-        ProjectFactoryController.ProjectCreateRequest req = captor.getValue();
-        assertEquals("my-project", req.name());
-        assertEquals("a test project", req.description());
+        var newProjectForm = captor.getValue();
+        assertEquals("my-project", newProjectForm.getName());
+        assertEquals("a test project", newProjectForm.getDescription());
+    }
+
+    @Test
+    void createProject_missingDescription() throws Exception {
+        String body = "{\"name\":\"only-name\"}";
+
+        mockMvc.perform(post("/api/internal/project/factory/create")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(body))
+                .andExpect(status().isOk());
+
+        var captor = ArgumentCaptor.forClass(NewProjectForm.class);
+        verify(projectFactory).createProject(captor.capture());
+
+        var newProjectForm = captor.getValue();
+        assertEquals("only-name", newProjectForm.getName());
+    }
+
+    @Test
+    void createProject_invalidJson() throws Exception {
+        String body = "{\"name\":"; // malformed JSON
+
+        mockMvc.perform(post("/api/internal/project/factory/create")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(body))
+                .andExpect(status().isBadRequest());
+
+        verifyNoInteractions(projectFactory);
     }
 
 }

@@ -2,7 +2,6 @@ package dev.hangarmc.hangar.project.factory;
 
 import dev.hangarmc.hangar.project.Project;
 import dev.hangarmc.hangar.project.ProjectCreatedEvent;
-import dev.hangarmc.hangar.project.factory.ProjectFactoryController.ProjectCreateRequest;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +14,10 @@ class ProjectFactory {
         this.eventPublisher = eventPublisher;
     }
 
-    void createProject(ProjectCreateRequest request) {
+    void createProject(NewProjectForm form) {
         // TODO validation
 
-        Project project = new Project(-1, request.name());
+        Project project = new Project(-1, form.getName());
 
         // TODO save to db
 //        Project withId = db.persist(project);

@@ -12,7 +12,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
-class SecurityConfig {
+public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(final HttpSecurity http) {
