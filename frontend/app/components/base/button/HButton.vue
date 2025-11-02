@@ -42,18 +42,18 @@ defineEmits<{
   >
     <Icon
         v-if="loading"
-        class="button__loading"
+        class="button__icon button__loading"
         name="lucide:loader-circle"
     />
     <slot />
     <Icon
         v-if="to"
-        style="margin-left: 0.35rem"
+        class="button__icon"
         name="lucide:arrow-right"
     />
     <Icon
         v-else-if="href"
-        style="margin-left: 0.35rem"
+        class="button__icon"
         name="lucide:external-link"
     />
   </component>
@@ -87,25 +87,25 @@ defineEmits<{
     border: 1px solid base.$primary;
 
     &:hover {
-      background-color: color-mix(in srgb, base.$primary 30%, transparent);
+      background-color: base.$primary-highlighted;
     }
   }
 
   &__secondary {
-    background-color: color-mix(in srgb, base.$secondary 25%, transparent);
+    background-color: base.$secondary-alt;
     border: 1px solid base.$secondary;
 
     &:hover {
-      background-color: color-mix(in srgb, base.$secondary 35%, transparent);
+      background-color: base.$secondary-highlighted;
     }
   }
 
   &__danger {
-    background-color: color-mix(in srgb, base.$danger 25%, transparent);
+    background-color: base.$danger-alt;
     border: 1px solid base.$danger;
 
     &:hover {
-      background-color: color-mix(in srgb, base.$danger 30%, transparent);
+      background-color: base.$danger-highlighted;
     }
   }
 
@@ -114,7 +114,7 @@ defineEmits<{
     border: 1px solid base.$secondary;
 
     &:hover {
-      background-color: color-mix(in srgb, base.$secondary 50%, transparent);
+      background-color: base.$secondary-alt;
     }
   }
 
@@ -123,8 +123,12 @@ defineEmits<{
     filter: brightness(0.7);
   }
 
+  &__icon {
+    margin-left: 0.3rem;
+  }
+
   &__loading {
-    margin-right: 0.25rem;
+    margin-right: 0.3rem;
     animation: spin 1s linear infinite;
   }
 }

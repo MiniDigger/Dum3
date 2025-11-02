@@ -1,11 +1,14 @@
 $primary: var(--color-primary, #004BE6);
 $primary-alt: color-mix(in srgb, $primary 25%, transparent);
+$primary-highlighted: color-mix(in srgb, $primary 30%, transparent);
+
 $secondary: var(--color-secondary, #3f3f46);
+$secondary-alt: color-mix(in srgb, $secondary 25%, transparent);
+$secondary-highlighted: color-mix(in srgb, $secondary 35%, transparent);
+
 $danger: var(--color-danger, #FF544B);
+$danger-alt: color-mix(in srgb, $danger 25%, transparent);
+$danger-highlighted: color-mix(in srgb, $danger 30%, transparent);
+
 $background-main: var(--color-background-main, #111111);            // main page background
-$background-surface: var(--color-background-surface, #181A1B);
-// cards, panel backgrounds
-$background-hover: #25262a;          // hover states / selected surfaces
-$color-bg-input: #121314;          // search / inputs
-$color-bg-tag: #202124;            // tag pills
-$color-bg-pill-selected: #151b27;  // selected pill (slight blue tint)
+$background-surface: var(--color-background-surface, #181A1B);      // cards, modals, etc. background
