@@ -1,4 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import "@/style/main.scss"
+
+</script>
 <template>
   <div>
     <NuxtRouteAnnouncer />
