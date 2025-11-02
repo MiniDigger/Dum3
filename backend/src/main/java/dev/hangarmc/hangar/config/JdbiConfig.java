@@ -1,7 +1,6 @@
 package dev.hangarmc.hangar.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.jdbi.v3.core.ConnectionFactory;
 import org.jdbi.v3.core.Jdbi;
@@ -13,7 +12,6 @@ import org.jdbi.v3.jackson2.Jackson2Config;
 import org.jdbi.v3.jackson2.Jackson2Plugin;
 import org.jdbi.v3.opentelemetry.JdbiOpenTelemetryPlugin;
 import org.jdbi.v3.postgres.PostgresPlugin;
-import org.jdbi.v3.spring.EnableJdbiRepositories;
 import org.jdbi.v3.spring.SpringConnectionFactory;
 import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +21,7 @@ import javax.sql.DataSource;
 import java.util.List;
 
 @Configuration
-class JdbiConfig {
+public class JdbiConfig {
 
     @Bean
     JdbiPlugin postgresPlugin() {
@@ -46,12 +44,10 @@ class JdbiConfig {
     }
 
     @Bean
-    Jdbi jdbi(final DataSource ds, final List<JdbiPlugin> jdbiPlugins, final List<RowMapper<?>> rowMappers, final List<RowMapperFactory> rowMapperFactories, final List<ColumnMapper<?>> columnMappers, final ObjectMapper objectMapper) {
-        final HikariConfig hc = new HikariConfig();
-        hc.setDataSource(ds);
-        hc.setMaximumPoolSize(6);
+    Jdbi jdbi(final HikariDataSource ds, final List<JdbiPlugin> jdbiPlugins, final List<RowMapper<?>> rowMappers, final List<RowMapperFactory> rowMapperFactories, final List<ColumnMapper<?>> columnMappers, final ObjectMapper objectMapper) {
+        ds.setMaximumPoolSize(6);
 
-        final ConnectionFactory cf = new SpringConnectionFactory(new HikariDataSource(hc));
+        final ConnectionFactory cf = new SpringConnectionFactory(ds);
         final Jdbi jdbi = Jdbi.create(cf);
 
         jdbi.getConfig(Jackson2Config.class).setMapper(objectMapper);

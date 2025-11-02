@@ -1,6 +1,7 @@
 package dev.hangarmc.hangar;
 
-import org.jdbi.v3.core.config.JdbiConfig;
+import dev.hangarmc.hangar.config.JdbiConfig;
+import org.springframework.boot.jdbc.autoconfigure.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.ElementType;
@@ -11,6 +12,7 @@ import java.lang.annotation.Target;
 @HangarConfigs
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Import({TestcontainersConfiguration.class, JdbiConfig.class})
+@Import({JdbiConfig.class, DataSourceAutoConfiguration.class})
 public @interface HangarDBConfigs {
+
 }

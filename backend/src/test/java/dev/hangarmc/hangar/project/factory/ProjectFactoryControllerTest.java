@@ -1,6 +1,7 @@
 package dev.hangarmc.hangar.project.factory;
 
 import dev.hangarmc.hangar.HangarConfigs;
+import dev.hangarmc.hangar.HangarDBConfigs;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@HangarConfigs
+@HangarDBConfigs
 @WebMvcTest(ProjectFactoryController.class)
 class ProjectFactoryControllerTest {
 
