@@ -5,20 +5,23 @@ const route = useRoute("Version");
 
 const versionId = computed(() => route.params.version?.split(".")?.[1]);
 
-const {data, error, pending} = await useAsyncData("version", (_nuxtApp, {signal}) => {
-      return Promise.resolve({
-        id: Number(versionId.value),
-        name: `Version ${versionId.value}`,
-      })
-      // return $fetch('/versions', {
-      //   query: {
-      //     id: versionId,
-      //   },
-      //   signal,
-      // });
-    }, {
-      watch: [versionId],
-    },
+const { data, error, pending } = await useAsyncData(
+  "version",
+  (_nuxtApp, { signal }) => {
+    return Promise.resolve({
+      id: Number(versionId.value),
+      name: `Version ${versionId.value}`,
+    });
+    // return $fetch('/versions', {
+    //   query: {
+    //     id: versionId,
+    //   },
+    //   signal,
+    // });
+  },
+  {
+    watch: [versionId],
+  }
 );
 
 definePageMeta({
@@ -28,5 +31,8 @@ definePageMeta({
 <template>
   <div v-if="pending">Loading...</div>
   <div v-else-if="error">Error: {{ error.message }}</div>
-  <Version v-else :version="data!" />
+  <Version
+    v-else
+    :version="data!"
+  />
 </template>

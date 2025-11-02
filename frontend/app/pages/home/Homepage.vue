@@ -3,7 +3,7 @@ import useI18n from "~/composables/useI18n";
 
 defineProps<{
   software?: string;
-}>()
+}>();
 
 const { t } = useI18n();
 </script>

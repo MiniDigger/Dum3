@@ -1,5 +1,3 @@
 <template>
-  <div>
-    Project
-  </div>
+  <div>Project</div>
 </template>

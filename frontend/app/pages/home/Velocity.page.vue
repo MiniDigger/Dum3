@@ -2,8 +2,8 @@
 import Homepage from "~/pages/home/Homepage.vue";
 
 definePageMeta({
-  path: "/velocity/"
-})
+  path: "/velocity/",
+});
 </script>
 
 <template>

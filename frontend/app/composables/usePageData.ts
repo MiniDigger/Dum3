@@ -1,3 +1,3 @@
 export default function usePageData(path: string) {
-    return computed(() => path.split(".")?.[1]);
+  return computed(() => path.split(".")?.[1]);
 }

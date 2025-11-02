@@ -1,10 +1,9 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 <template>
   <div>
-    <NuxtRouteAnnouncer/>
+    <NuxtRouteAnnouncer />
     <Suspense>
-      <NuxtPage/>
+      <NuxtPage />
     </Suspense>
   </div>
 </template>

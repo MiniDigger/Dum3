@@ -2,8 +2,8 @@
 import Homepage from "~/pages/home/Homepage.vue";
 
 definePageMeta({
-  path: "/waterfall/"
-})
+  path: "/waterfall/",
+});
 </script>
 
 <template>
