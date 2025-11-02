@@ -13,6 +13,24 @@ const preview: Preview = {
         light: "light",
       },
     }),
+      (story, context) => ({
+          components: { story },
+          setup() {
+              return {};
+          },
+          template: `
+    <div style="
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      background-color: var(--color-background-main);
+      margin: 0;
+      padding: 2rem;
+    ">
+      <story />
+    </div>
+  `,
+      }),
   ],
   parameters: {
     backgrounds: {

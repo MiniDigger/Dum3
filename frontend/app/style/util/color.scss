@@ -1,8 +1,11 @@
-$primary: var(--color-primary, #007bff);
-$secondary: var(--color-secondary, #6c757d);
-$success: var(--color-success, #28a745);
-$danger: var(--color-danger, #dc3545);
-$warning: var(--color-warning, #ffc107);
-$info: var(--color-info, #17a2b8);
-$background: var(--color-background, #f8f9fa);
-$on-background: var(--color-on-background, #343a40);
+$primary: var(--color-primary, #004BE6);
+$primary-alt: color-mix(in srgb, $primary 25%, transparent);
+$secondary: var(--color-secondary, #3f3f46);
+$danger: var(--color-danger, #FF544B);
+$background-main: var(--color-background-main, #111111);            // main page background
+$background-surface: var(--color-background-surface, #181A1B);
+// cards, panel backgrounds
+$background-hover: #25262a;          // hover states / selected surfaces
+$color-bg-input: #121314;          // search / inputs
+$color-bg-tag: #202124;            // tag pills
+$color-bg-pill-selected: #151b27;  // selected pill (slight blue tint)
