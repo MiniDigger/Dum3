@@ -2,24 +2,22 @@
 import type { RouteLocationRaw } from "vue-router";
 import { NuxtLink } from "#components";
 
-withDefaults(
-    defineProps<{
-      disabled?: boolean;
-      buttonType?: "primary" | "secondary" | "danger" | "transparent";
-      loading?: boolean;
-      to?: string | RouteLocationRaw | object;
-      href?: string;
-      width?: string;
-    }>(),
-    {
-      disabled: false,
-      buttonType: "primary",
-      loading: false,
-      to: undefined,
-      href: undefined,
-      width: undefined,
-    }
-);
+const {
+  disabled = false,
+  buttonType = "primary",
+  loading = false,
+  to = undefined,
+  href = undefined,
+  width = undefined,
+} = defineProps<{
+  disabled?: boolean;
+  buttonType?: "primary" | "secondary" | "danger" | "transparent";
+  loading?: boolean;
+  to?: string | RouteLocationRaw | object;
+  href?: string;
+  width?: string;
+}>()
+
 defineEmits<{
   click: [event: MouseEvent];
 }>();
@@ -34,6 +32,9 @@ defineEmits<{
           'button__disabled': disabled || loading
         },
       ]"
+      :style="{
+        width: width ? width : undefined
+      }"
       :disabled="disabled || loading"
       :to="to"
       :href="href"
@@ -42,7 +43,7 @@ defineEmits<{
   >
     <Icon
         v-if="loading"
-        class="button__icon button__loading"
+        class="button__loading"
         name="lucide:loader-circle"
     />
     <slot />
@@ -128,6 +129,7 @@ defineEmits<{
   }
 
   &__loading {
+    margin-top: 2px;
     margin-right: 0.3rem;
     animation: spin 1s linear infinite;
   }

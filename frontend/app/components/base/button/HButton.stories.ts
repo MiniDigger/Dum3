@@ -22,6 +22,9 @@ const meta: Meta<typeof HButton> = {
         href: {
             control: 'text',
         },
+        width: {
+            control: 'text',
+        },
         onClick: { action: 'clicked' },
     },
 };
@@ -132,5 +135,21 @@ export const ExternalLink: Story = {
             return { args };
         },
         template: '<HButton v-bind="args">External Link</HButton>',
+    }),
+};
+
+export const FixedWidth: Story = {
+    args: {
+        buttonType: 'primary',
+        width: '100%',
+        disabled: false,
+        loading: false,
+    },
+    render: (args) => ({
+        components: { HButton },
+        setup() {
+            return { args };
+        },
+        template: '<HButton v-bind="args">Primary Button</HButton>',
     }),
 };
