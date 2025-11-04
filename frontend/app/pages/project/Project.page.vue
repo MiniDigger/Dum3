@@ -4,14 +4,12 @@ import ProjectLayout from "~/pages/project/ProjectLayout.vue";
 
 const route = useRoute("Project");
 
-const projectId = computed(() => route.params.project?.split(".")?.[1]);
-
 const { data, error, pending } = await useAsyncData(
   "project",
   (_nuxtApp, { signal }) => {
     return Promise.resolve({
-      id: Number(projectId.value),
-      name: `Project ${projectId.value}`,
+      id: -1,
+      name: `Project ${route.params.project}`,
     });
     // return $fetch('/projects', {
     //   query: {
@@ -21,7 +19,7 @@ const { data, error, pending } = await useAsyncData(
     // });
   },
   {
-    watch: [projectId],
+    watch: [() => route.params.project],
   }
 );
 

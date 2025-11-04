@@ -1,16 +1,13 @@
 <script lang="ts" setup>
 import User from "~/pages/user/User.vue";
-import usePageData from "~/composables/usePageData";
 
 const route = useRoute("User");
-
-const userId = usePageData(route.params.user);
 
 const { data, error, pending } = await useAsyncData(
   "user",
   (_nuxtApp, { signal }) => {
     return Promise.resolve({
-      name: `User ${userId.value}`,
+      name: `User ${route.params.user}`,
     });
     // return $fetch('/users', {
     //   query: {
@@ -20,7 +17,7 @@ const { data, error, pending } = await useAsyncData(
     // });
   },
   {
-    watch: [userId],
+    watch: [() => route.params.user],
   }
 );
 
