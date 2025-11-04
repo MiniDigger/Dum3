@@ -3,14 +3,12 @@ import Version from "~/pages/project/version/Version.vue";
 
 const route = useRoute("Version");
 
-const versionId = computed(() => route.params.version?.split(".")?.[1]);
-
 const { data, error, pending } = await useAsyncData(
   "version",
   (_nuxtApp, { signal }) => {
     return Promise.resolve({
-      id: Number(versionId.value),
-      name: `Version ${versionId.value}`,
+      id: -1,
+      name: `Version ${route.params.version}`,
     });
     // return $fetch('/versions', {
     //   query: {
@@ -20,7 +18,7 @@ const { data, error, pending } = await useAsyncData(
     // });
   },
   {
-    watch: [versionId],
+    watch: [() => route.params.version],
   }
 );
 
