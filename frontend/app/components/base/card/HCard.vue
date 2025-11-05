@@ -1,11 +1,15 @@
 <script setup lang="ts">
 
+const {
+  width = '100%',
+} = defineProps<{
+  width?: string;
+}>()
 </script>
 
 <template>
-  <div class="card">
+  <div class="card" :style="{ width: width }">
     <slot name="header" />
-    <div v-if="$slots.default && $slots.header" class="card__divisor" />
     <slot />
   </div>
 </template>

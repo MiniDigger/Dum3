@@ -8,24 +8,15 @@ const meta: Meta<typeof HButton> = {
     argTypes: {
         buttonType: {
             control: 'select',
-            options: ['primary', 'secondary', 'danger', 'transparent'],
+            options: ['primary', 'secondary', 'danger', 'transparent', 'borderless'],
         },
-        disabled: {
-            control: 'boolean',
-        },
-        loading: {
-            control: 'boolean',
-        },
-        to: {
-            control: 'text',
-        },
-        href: {
-            control: 'text',
-        },
-        width: {
-            control: 'text',
-        },
-        onClick: { action: 'clicked' },
+        disabled: { control: 'boolean' },
+        loading: { control: 'boolean' },
+        rounded: { control: 'boolean' },
+        icon: { control: 'text' },
+        width: { control: 'text' },
+        to: { control: 'text' },
+        href: { control: 'text' },
     },
 };
 
@@ -35,121 +26,236 @@ type Story = StoryObj<typeof HButton>;
 export const Primary: Story = {
     args: {
         buttonType: 'primary',
-        disabled: false,
-        loading: false,
+        default: 'Primary Button',
     },
     render: (args) => ({
         components: { HButton },
         setup() {
             return { args };
         },
-        template: '<HButton v-bind="args">Primary Button</HButton>',
+        template: '<HButton v-bind="args">{{ args.default }}</HButton>',
     }),
 };
 
 export const Secondary: Story = {
     args: {
         buttonType: 'secondary',
+        default: 'Secondary Button',
     },
     render: (args) => ({
         components: { HButton },
         setup() {
             return { args };
         },
-        template: '<HButton v-bind="args">Secondary Button</HButton>',
+        template: '<HButton v-bind="args">{{ args.default }}</HButton>',
     }),
 };
 
 export const Danger: Story = {
     args: {
         buttonType: 'danger',
+        default: 'Danger Button',
     },
     render: (args) => ({
         components: { HButton },
         setup() {
             return { args };
         },
-        template: '<HButton v-bind="args">Danger Button</HButton>',
+        template: '<HButton v-bind="args">{{ args.default }}</HButton>',
     }),
 };
 
 export const Transparent: Story = {
     args: {
         buttonType: 'transparent',
+        default: 'Transparent Button',
     },
     render: (args) => ({
         components: { HButton },
         setup() {
             return { args };
         },
-        template: '<HButton v-bind="args">Transparent Button</HButton>',
+        template: '<HButton v-bind="args">{{ args.default }}</HButton>',
     }),
 };
 
-export const Disabled: Story = {
+export const Borderless: Story = {
     args: {
-        disabled: true,
+        buttonType: 'transparent',
+        borderless: true,
+        default: 'Borderless Button',
     },
     render: (args) => ({
         components: { HButton },
         setup() {
             return { args };
         },
-        template: '<HButton v-bind="args">Disabled Button</HButton>',
+        template: '<HButton v-bind="args">{{ args.default }}</HButton>',
+    }),
+};
+
+export const WithIcon: Story = {
+    args: {
+        buttonType: 'primary',
+        icon: 'lucide:star',
+        default: 'Button with Icon',
+    },
+    render: (args) => ({
+        components: { HButton },
+        setup() {
+            return { args };
+        },
+        template: '<HButton v-bind="args">{{ args.default }}</HButton>',
+    }),
+};
+
+export const Rounded: Story = {
+    args: {
+        buttonType: 'primary',
+        rounded: true,
+        default: 'Rounded Button',
+    },
+    render: (args) => ({
+        components: { HButton },
+        setup() {
+            return { args };
+        },
+        template: '<HButton v-bind="args">{{ args.default }}</HButton>',
+    }),
+};
+
+export const RoundedWithIcon: Story = {
+    args: {
+        buttonType: 'secondary',
+        rounded: true,
+        icon: 'lucide:heart',
+        default: 'Rounded with Icon',
+    },
+    render: (args) => ({
+        components: { HButton },
+        setup() {
+            return { args };
+        },
+        template: '<HButton v-bind="args">{{ args.default }}</HButton>',
+    }),
+};
+
+export const WithRouterLink: Story = {
+    args: {
+        buttonType: 'primary',
+        to: '/example',
+        default: 'Router Link Button',
+    },
+    render: (args) => ({
+        components: { HButton },
+        setup() {
+            return { args };
+        },
+        template: '<HButton v-bind="args">{{ args.default }}</HButton>',
+    }),
+};
+
+export const WithExternalLink: Story = {
+    args: {
+        buttonType: 'secondary',
+        href: 'https://example.com',
+        default: 'External Link Button',
+    },
+    render: (args) => ({
+        components: { HButton },
+        setup() {
+            return { args };
+        },
+        template: '<HButton v-bind="args">{{ args.default }}</HButton>',
     }),
 };
 
 export const Loading: Story = {
     args: {
+        buttonType: 'primary',
         loading: true,
+        default: 'Loading',
     },
     render: (args) => ({
         components: { HButton },
         setup() {
             return { args };
         },
-        template: '<HButton v-bind="args">Loading Button</HButton>',
+        template: '<HButton v-bind="args">{{ args.default }}</HButton>',
     }),
 };
 
-export const LinkToPage: Story = {
-    args: {
-        to: '/example',
-    },
-    render: (args) => ({
-        components: { HButton },
-        setup() {
-            return { args };
-        },
-        template: '<HButton v-bind="args">Router Link</HButton>',
-    }),
-};
-
-export const ExternalLink: Story = {
-    args: {
-        href: 'https://example.com',
-    },
-    render: (args) => ({
-        components: { HButton },
-        setup() {
-            return { args };
-        },
-        template: '<HButton v-bind="args">External Link</HButton>',
-    }),
-};
-
-export const FixedWidth: Story = {
+export const Disabled: Story = {
     args: {
         buttonType: 'primary',
-        width: '100%',
-        disabled: false,
-        loading: false,
+        disabled: true,
+        default: 'Disabled',
     },
     render: (args) => ({
         components: { HButton },
         setup() {
             return { args };
         },
-        template: '<HButton v-bind="args">Primary Button</HButton>',
+        template: '<HButton v-bind="args">{{ args.default }}</HButton>',
+    }),
+};
+
+export const CustomWidth: Story = {
+    args: {
+        buttonType: 'primary',
+        width: '200px',
+        default: 'Custom Width Button',
+    },
+    render: (args) => ({
+        components: { HButton },
+        setup() {
+            return { args };
+        },
+        template: '<HButton v-bind="args">{{ args.default }}</HButton>',
+    }),
+};
+
+export const IconOnlyRounded: Story = {
+    args: {
+        buttonType: 'primary',
+        rounded: true,
+        icon: 'lucide:settings',
+    },
+    render: (args) => ({
+        components: { HButton },
+        setup() {
+            return { args };
+        },
+        template: '<HButton v-bind="args" />',
+    }),
+};
+
+export const IconOnlySecondary: Story = {
+    args: {
+        buttonType: 'secondary',
+        icon: 'lucide:more-vertical',
+    },
+    render: (args) => ({
+        components: { HButton },
+        setup() {
+            return { args };
+        },
+        template: '<HButton v-bind="args" />',
+    }),
+};
+
+export const IconOnlyBorderlessRounded: Story = {
+    args: {
+        buttonType: 'transparent',
+        rounded: true,
+        borderless: true,
+        icon: 'lucide:x',
+    },
+    render: (args) => ({
+        components: { HButton },
+        setup() {
+            return { args };
+        },
+        template: '<HButton v-bind="args" />',
     }),
 };

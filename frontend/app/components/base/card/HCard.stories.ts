@@ -5,64 +5,103 @@ const meta: Meta<typeof HCard> = {
     title: 'Base/HCard',
     component: HCard,
     tags: ['autodocs'],
-    argTypes: {},
+    argTypes: {
+        width: { control: 'text' },
+    },
 };
 
 export default meta;
 type Story = StoryObj<typeof HCard>;
 
 export const Default: Story = {
-    render: () => ({
+    args: {},
+    render: (args) => ({
         components: { HCard },
+        setup() {
+            return { args };
+        },
         template: `
-      <HCard>
+      <HCard v-bind="args">
+        <p>This is the default card content.</p>
+      </HCard>
+    `,
+    }),
+};
+
+export const WithHeader: Story = {
+    args: {},
+    render: (args) => ({
+        components: { HCard },
+        setup() {
+            return { args };
+        },
+        template: `
+      <HCard v-bind="args">
         <template #header>
-          <h2>Card Title</h2>
+          <h3>Card Title</h3>
         </template>
-        <template #default>
-          <p>This is the main content of the card.</p>
-        </template>
+        <p>This card has a header and content.</p>
       </HCard>
     `,
     }),
 };
 
 export const HeaderOnly: Story = {
-    render: () => ({
+    args: {},
+    render: (args) => ({
         components: { HCard },
+        setup() {
+            return { args };
+        },
         template: `
-      <HCard>
+      <HCard v-bind="args">
         <template #header>
-          <h2>Card with Header Only</h2>
+          <h3>Header Only</h3>
         </template>
       </HCard>
     `,
     }),
 };
 
-export const ContentOnly: Story = {
-    render: () => ({
+export const CustomWidth: Story = {
+    args: {
+        width: '400px',
+    },
+    render: (args) => ({
         components: { HCard },
+        setup() {
+            return { args };
+        },
         template: `
-      <HCard>
-        <p>Card with content only, no header.</p>
+      <HCard v-bind="args">
+        <template #header>
+          <h3>Custom Width Card</h3>
+        </template>
+        <p>This card has a custom width of 400px.</p>
       </HCard>
     `,
     }),
 };
 
-export const LongContent: Story = {
-    render: () => ({
+export const WithMultipleElements: Story = {
+    args: {},
+    render: (args) => ({
         components: { HCard },
+        setup() {
+            return { args };
+        },
         template: `
-      <HCard>
+      <HCard v-bind="args">
         <template #header>
-          <h2>Long Content Example</h2>
+          <h3>Card with Multiple Elements</h3>
         </template>
-        <template #default>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </template>
+        <p>First paragraph of content.</p>
+        <p>Second paragraph of content.</p>
+        <ul>
+          <li>List item 1</li>
+          <li>List item 2</li>
+          <li>List item 3</li>
+        </ul>
       </HCard>
     `,
     }),
