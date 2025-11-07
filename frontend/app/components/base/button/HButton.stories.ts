@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 import HButton from './HButton.vue';
 
 const meta: Meta<typeof HButton> = {
-    title: 'Base/HButton',
+    title: 'Components/Base/HButton',
     component: HButton,
     tags: ['autodocs'],
     argTypes: {
@@ -82,7 +82,7 @@ export const Transparent: Story = {
 export const Borderless: Story = {
     args: {
         buttonType: 'transparent',
-        borderless: true,
+        onlyHover: true,
         default: 'Borderless Button',
     },
     render: (args) => ({
@@ -248,7 +248,7 @@ export const IconOnlyBorderlessRounded: Story = {
     args: {
         buttonType: 'transparent',
         rounded: true,
-        borderless: true,
+        onlyHover: true,
         icon: 'lucide:x',
     },
     render: (args) => ({

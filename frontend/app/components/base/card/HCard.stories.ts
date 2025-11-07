@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 import HCard from './HCard.vue';
 
 const meta: Meta<typeof HCard> = {
-    title: 'Base/HCard',
+    title: 'Components/Base/HCard',
     component: HCard,
     tags: ['autodocs'],
     argTypes: {

@@ -11,7 +11,8 @@ const {
   rounded = false,
   icon = undefined,
   width = undefined,
-  borderless = false,
+  onlyHover = false,
+  textAlign = 'center',
 } = defineProps<{
   disabled?: boolean;
   buttonType?: "primary" | "secondary" | "danger" | "transparent";
@@ -21,12 +22,17 @@ const {
   rounded?: boolean;
   icon?: string;
   width?: string;
-  borderless?: boolean;
+  onlyHover?: boolean;
+  textAlign?: 'left' | 'center' | 'right';
 }>()
 
 defineEmits<{
   click: [event: MouseEvent];
 }>();
+
+defineOptions({
+  inheritAttrs: false
+});
 </script>
 
 <template>
@@ -38,11 +44,13 @@ defineEmits<{
           'button__disabled': disabled || loading,
           'button__rounded': rounded,
           'button__icon-only': icon && !$slots.default,
-          'button__borderless': borderless,
+          'button__borderless': onlyHover,
         },
+        $attrs.class
       ]"
       :style="{
-        width: width ? width : undefined
+        width: width ? width : undefined,
+        justifyContent: textAlign,
       }"
       :disabled="disabled || loading"
       :to="to"
@@ -94,12 +102,9 @@ defineEmits<{
   cursor: pointer;
   padding: 0.3rem 0.5rem;
   display: inline-flex;
-  border-radius: 0.5rem;
+  border-radius: 0.35rem;
+  transition: all 0.25s;
   align-items: center;
-  justify-content: center;
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
-              background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-              border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   color: white;
   will-change: transform;
 
