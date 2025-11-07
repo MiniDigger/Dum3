@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 import HCollapsibleCard from './HCollapsibleCard.vue';
 
 const meta: Meta<typeof HCollapsibleCard> = {
-    title: 'Base/HCollapsibleCard',
+    title: 'Components/Base/HCollapsibleCard',
     component: HCollapsibleCard,
     tags: ['autodocs'],
     argTypes: {

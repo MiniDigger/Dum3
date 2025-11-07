@@ -22,7 +22,7 @@ const openCard = () => {
         <slot name="header"/>
         <HButton buttonType="primary"
                  rounded
-                 borderless
+                 onlyHover
                  :icon="openState ? 'lucide:chevron-down' : 'lucide:chevron-up'"
         />
       </div>
