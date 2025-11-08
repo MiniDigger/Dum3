@@ -10,7 +10,9 @@ const {
   href = undefined,
   rounded = false,
   icon = undefined,
+  iconSide = 'left',
   width = undefined,
+  distancedIcon = false,
   onlyHover = false,
   textAlign = 'center',
 } = defineProps<{
@@ -21,6 +23,8 @@ const {
   href?: string;
   rounded?: boolean;
   icon?: string;
+  distancedIcon?: boolean;
+  iconSide?: 'left' | 'right';
   width?: string;
   onlyHover?: boolean;
   textAlign?: 'left' | 'center' | 'right';
@@ -45,6 +49,7 @@ defineOptions({
           'button__rounded': rounded,
           'button__icon-only': icon && !$slots.default,
           'button__borderless': onlyHover,
+          'icon__distanced': distancedIcon,
         },
         $attrs.class
       ]"
@@ -64,22 +69,19 @@ defineOptions({
         name="lucide:loader-circle"
     />
     <Icon
-        v-if="icon"
+        v-if="(icon || to || href) && iconSide === 'left'"
         :class="{
           'icon__left': $slots.default,
         }"
-        :name="icon"
+        :name="to ? 'lucide:arrow-right' : href ? 'lucide:external-link' : icon ? icon : ''"
     />
     <slot />
     <Icon
-        v-if="to"
-        class="icon__right"
-        name="lucide:arrow-right"
-    />
-    <Icon
-        v-else-if="href"
-        class="icon__right"
-        name="lucide:external-link"
+      v-if="(icon || to || href) && iconSide === 'right'"
+      :class="{
+        'icon__right': $slots.default,
+      }"
+      :name="to ? 'lucide:arrow-right' : href ? 'lucide:external-link' : icon ? icon : ''"
     />
   </component>
 </template>
@@ -88,6 +90,10 @@ defineOptions({
 @use "@/style/util/base" as base;
 
 .icon {
+  &__distanced {
+    width: 100%;
+    justify-content: space-between !important;
+  }
   &__right {
     margin-left: 0.3rem;
   }
@@ -96,6 +102,7 @@ defineOptions({
     margin-right: 0.3rem;
   }
 }
+
 .button {
   user-select: none;
   all: unset;
@@ -105,6 +112,7 @@ defineOptions({
   border-radius: 0.35rem;
   transition: all 0.25s;
   align-items: center;
+  justify-items: center;
   color: white;
   will-change: transform;
 
@@ -188,6 +196,7 @@ defineOptions({
   }
 
   &__icon-only {
+    line-height: 0;
     padding: 0.3rem;
   }
 }

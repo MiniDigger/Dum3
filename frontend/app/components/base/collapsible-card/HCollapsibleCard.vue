@@ -20,10 +20,11 @@ const openCard = () => {
     <template #header>
       <div class="header" @click="openCard">
         <slot name="header"/>
-        <HButton buttonType="primary"
-                 rounded
-                 onlyHover
-                 :icon="openState ? 'lucide:chevron-down' : 'lucide:chevron-up'"
+        <HButton
+          buttonType="primary"
+          rounded
+          onlyHover
+          :icon="openState ? 'lucide:chevron-down' : 'lucide:chevron-up'"
         />
       </div>
     </template>

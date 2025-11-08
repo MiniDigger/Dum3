@@ -31,21 +31,21 @@ const clearInput = () => {
   <div class="field field__wrapper">
     <Icon v-if="icon" :name="icon" class="icon" />
     <input
-        v-model="input"
-        name="query"
-        class="field field__input"
-        type="text"
-        :placeholder="placeholder"
-        @input="handleInput"
+      v-model="input"
+      name="query"
+      class="field field__input"
+      type="text"
+      :placeholder="placeholder"
+      @input="handleInput"
     />
     <HButton
-        v-if="input.length > 0"
-        rounded
-        onlyHover
-        buttonType="secondary"
-        icon="lucide:x"
-        class="icon icon__close"
-        @click="clearInput"
+      v-if="input.length > 0"
+      rounded
+      onlyHover
+      buttonType="secondary"
+      icon="lucide:x"
+      class="icon icon__close"
+      @click="clearInput"
     />
   </div>
 

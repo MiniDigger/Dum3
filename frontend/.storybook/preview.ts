@@ -13,7 +13,7 @@ const preview: Preview = {
         light: "light",
       },
     }),
-      (story, context) => ({
+      (story) => ({
           components: { story },
           setup() {
               return {};
@@ -25,7 +25,9 @@ const preview: Preview = {
       justify-content: center;
       background-color: var(--color-background-main);
       margin: 0;
-      padding: 2rem;
+      padding: 5rem;
+      height: 100vh;
+      width: 100%;
     ">
       <story />
     </div>

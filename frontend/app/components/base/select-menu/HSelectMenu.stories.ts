@@ -144,10 +144,12 @@ export const Interactive: Story = {
     }),
 };
 
-export const LongList: Story = {
+export const ScrollableList: Story = {
     args: {
+        scrollable: true,
         items: Array.from({ length: 20 }, (_, i) => `Option ${i + 1}`),
-        placeholder: 'Select from many options',
+        placeholder: "Select from many options",
+        width: '300px'
     },
     render: (args) => ({
         components: { HSelectMenu },
@@ -155,6 +157,22 @@ export const LongList: Story = {
             const selectedValue = ref<string | null>(null);
             return { args, selectedValue };
         },
-        template: `<HSelectMenu v-bind="args" v-model="selectedValue" />`,
+        template: `<HSelectMenu align="center" v-bind="args" v-model="selectedValue" />`,
+    }),
+};
+
+export const CustomWidth: Story = {
+    args: {
+        items: ['Option 1', 'Option 2', 'Option 3'],
+        placeholder: 'Wide select menu',
+        width: '300px'
+    },
+    render: (args) => ({
+        components: { HSelectMenu },
+        setup() {
+            const selectedValue = ref<string | null>(null);
+            return { args, selectedValue };
+        },
+        template: `<HSelectMenu v-bind="args" v-model="selectedValue" />`
     }),
 };

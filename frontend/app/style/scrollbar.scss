@@ -1,0 +1,23 @@
+@use "./util/base" as base;
+
+::-webkit-scrollbar {
+  height: 10px;
+}
+
+* {
+  scrollbar-color: base.$primary transparent;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar-track {
+  background: base.$primary;
+}
+
+::-webkit-scrollbar-thumb {
+  background: base.$primary;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: base.$primary;
+}

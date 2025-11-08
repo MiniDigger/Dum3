@@ -22,7 +22,7 @@ const {
   border: 1px solid base.$secondary;
   border-radius: 0.75rem;
   color: white;
-  padding: 0.75rem;
+  padding: 0.5rem;
 
   &__divisor {
     width: 100%;

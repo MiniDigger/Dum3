@@ -15,13 +15,16 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-    render: () => ({
+    args: {
+        width: '10rem',
+    },
+    render: (args) => ({
         components: { HDropdownMenu, HButton },
+        setup() {
+            return { args };
+        },
         template: `
-          <HDropdownMenu>
-            <template #trigger>
-              <HButton buttonType="secondary">Menu</HButton>
-            </template>
+          <HDropdownMenu v-bind="args">
             <template #default>
               <HButton onlyHover textAlign="left" buttonType="secondary">Option 1</HButton>
               <HButton onlyHover textAlign="left" buttonType="secondary">Option 2</HButton>
@@ -33,16 +36,21 @@ export const Default: Story = {
 };
 
 export const SideTop: Story = {
-    render: () => ({
+    args: {
+        label: 'Open Top',
+        side: 'top',
+        width: '10rem',
+    },
+    render: (args) => ({
         components: { HDropdownMenu, HButton },
+        setup() {
+            return { args };
+        },
         template: `
-          <HDropdownMenu side="top" width="10rem">
-            <template #trigger>
-              <HButton buttonType="secondary">Open Top</HButton>
-            </template>
+          <HDropdownMenu v-bind="args">
             <template #default>
-                <HButton onlyHover textAlign="left" buttonType="secondary">Option 1</HButton>
-                <HButton onlyHover textAlign="left" buttonType="secondary">Option 2</HButton>
+              <HButton onlyHover textAlign="left" buttonType="secondary">Option 1</HButton>
+              <HButton onlyHover textAlign="left" buttonType="secondary">Option 2</HButton>
             </template>
           </HDropdownMenu>
         `,
@@ -50,16 +58,21 @@ export const SideTop: Story = {
 };
 
 export const SideBottom: Story = {
-    render: () => ({
+    args: {
+        label: 'Open Bottom',
+        side: 'bottom',
+        width: '10rem',
+    },
+    render: (args) => ({
         components: { HDropdownMenu, HButton },
+        setup() {
+            return { args };
+        },
         template: `
-          <HDropdownMenu side="bottom" width="10rem">
-            <template #trigger>
-              <HButton buttonType="secondary">Open Bottom</HButton>
-            </template>
+          <HDropdownMenu v-bind="args">
             <template #default>
-                <HButton onlyHover textAlign="left" buttonType="secondary">Option 1</HButton>
-                <HButton onlyHover textAlign="left" buttonType="secondary">Option 2</HButton>
+              <HButton onlyHover textAlign="left" buttonType="secondary">Option 1</HButton>
+              <HButton onlyHover textAlign="left" buttonType="secondary">Option 2</HButton>
             </template>
           </HDropdownMenu>
         `,
@@ -67,16 +80,21 @@ export const SideBottom: Story = {
 };
 
 export const SideLeft: Story = {
-    render: () => ({
+    args: {
+        label: 'Open Left',
+        side: 'left',
+        width: '10rem',
+    },
+    render: (args) => ({
         components: { HDropdownMenu, HButton },
+        setup() {
+            return { args };
+        },
         template: `
-          <HDropdownMenu side="left" width="10rem">
-            <template #trigger>
-              <HButton buttonType="secondary">Open Left</HButton>
-            </template>
+          <HDropdownMenu v-bind="args">
             <template #default>
-                <HButton onlyHover textAlign="left" buttonType="secondary">Option 1</HButton>
-                <HButton onlyHover textAlign="left" buttonType="secondary">Option 2</HButton>
+              <HButton onlyHover textAlign="left" buttonType="secondary">Option 1</HButton>
+              <HButton onlyHover textAlign="left" buttonType="secondary">Option 2</HButton>
             </template>
           </HDropdownMenu>
         `,
@@ -84,16 +102,21 @@ export const SideLeft: Story = {
 };
 
 export const SideRight: Story = {
-    render: () => ({
+    args: {
+        label: 'Open Right',
+        side: 'right',
+        width: '10rem',
+    },
+    render: (args) => ({
         components: { HDropdownMenu, HButton },
+        setup() {
+            return { args };
+        },
         template: `
-          <HDropdownMenu side="right" width="10rem">
-            <template #trigger>
-              <HButton buttonType="secondary">Open Right</HButton>
-            </template>
+          <HDropdownMenu v-bind="args">
             <template #default>
-                <HButton onlyHover textAlign="left" buttonType="secondary">Option 1</HButton>
-                <HButton onlyHover textAlign="left" buttonType="secondary">Option 2</HButton>
+              <HButton onlyHover textAlign="left" buttonType="secondary">Option 1</HButton>
+              <HButton onlyHover textAlign="left" buttonType="secondary">Option 2</HButton>
             </template>
           </HDropdownMenu>
         `,
@@ -101,16 +124,21 @@ export const SideRight: Story = {
 };
 
 export const AlignStart: Story = {
-    render: () => ({
+    args: {
+        label: 'Align Start',
+        align: 'start',
+        width: '10rem',
+    },
+    render: (args) => ({
         components: { HDropdownMenu, HButton },
+        setup() {
+            return { args };
+        },
         template: `
-          <HDropdownMenu align="start" width="10rem">
-            <template #trigger>
-              <HButton buttonType="secondary">Align Start</HButton>
-            </template>
+          <HDropdownMenu v-bind="args">
             <template #default>
-                <HButton onlyHover textAlign="left" buttonType="secondary">Option 1</HButton>
-                <HButton onlyHover textAlign="left" buttonType="secondary">Option 2</HButton>
+              <HButton onlyHover textAlign="left" buttonType="secondary">Option 1</HButton>
+              <HButton onlyHover textAlign="left" buttonType="secondary">Option 2</HButton>
             </template>
           </HDropdownMenu>
         `,
@@ -118,16 +146,21 @@ export const AlignStart: Story = {
 };
 
 export const AlignCenter: Story = {
-    render: () => ({
+    args: {
+        label: 'Align Center',
+        align: 'center',
+        width: '10rem',
+    },
+    render: (args) => ({
         components: { HDropdownMenu, HButton },
+        setup() {
+            return { args };
+        },
         template: `
-          <HDropdownMenu align="center" width="10rem">
-            <template #trigger>
-              <HButton buttonType="secondary">Align Center</HButton>
-            </template>
+          <HDropdownMenu v-bind="args">
             <template #default>
-                <HButton onlyHover textAlign="left" buttonType="secondary">Option 1</HButton>
-                <HButton onlyHover textAlign="left" buttonType="secondary">Option 2</HButton>
+              <HButton onlyHover textAlign="left" buttonType="secondary">Option 1</HButton>
+              <HButton onlyHover textAlign="left" buttonType="secondary">Option 2</HButton>
             </template>
           </HDropdownMenu>
         `,
@@ -135,16 +168,21 @@ export const AlignCenter: Story = {
 };
 
 export const AlignEnd: Story = {
-    render: () => ({
+    args: {
+        align: 'end',
+        width: '10rem',
+        label: 'Align End'
+    },
+    render: (args) => ({
         components: { HDropdownMenu, HButton },
+        setup() {
+            return { args };
+        },
         template: `
-          <HDropdownMenu align="end" width="10rem">
-            <template #trigger>
-              <HButton buttonType="secondary">Align End</HButton>
-            </template>
+          <HDropdownMenu v-bind="args">
             <template #default>
-                <HButton onlyHover textAlign="left" buttonType="secondary">Option 1</HButton>
-                <HButton onlyHover textAlign="left" buttonType="secondary">Option 2</HButton>
+              <HButton onlyHover textAlign="left" buttonType="secondary">Option 1</HButton>
+              <HButton onlyHover textAlign="left" buttonType="secondary">Option 2</HButton>
             </template>
           </HDropdownMenu>
         `,
